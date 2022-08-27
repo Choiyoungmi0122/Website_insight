@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'common.apps.CommonConfig',
     'insight.apps.InsightConfig',
     'django.contrib.admin',
