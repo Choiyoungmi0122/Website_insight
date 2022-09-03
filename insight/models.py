@@ -12,17 +12,34 @@ class Answer(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField()
 
-class Users(models.Model):
-    username=models.CharField(max_length=64, verbose_name="사용자명")
-    #useremail=models.EmailField(max_length=128, verbose_name="사용자 이메일")
-    password=models.CharField(max_length=64, verbose_name="비밀번호")
-    registered_dttm=models.DateField(auto_now_add=True, verbose_name="등록시간")
+class Person(models.Model):
+    name=models.CharField(max_length=10)
+    username=models.CharField(max_length=41)
+    school=models.IntegerField()
+    email=models.EmailField()
+    gender=models.IntegerField()
+    birth=models.IntegerField()
 
     def __str__(self):
-        return self.username
+        return self.name
 
-    #DB테이블 이름 설정
-    class Meta:
-        db_table="users"
-        verbose_name="사용자"
-        verbose_name_plural="사용자"
+    @property
+    def is_staff(self):
+        return self.is_staff
+
+
+
+# class Users(models.Model):
+#     username=models.CharField(max_length=64, verbose_name="사용자명")
+#     #useremail=models.EmailField(max_length=128, verbose_name="사용자 이메일")
+#     password=models.CharField(max_length=64, verbose_name="비밀번호")
+#     registered_dttm=models.DateField(auto_now_add=True, verbose_name="등록시간")
+#
+#     def __str__(self):
+#         return self.username
+#
+#     #DB테이블 이름 설정
+#     class Meta:
+#         db_table="users"
+#         verbose_name="사용자"
+#         verbose_name_plural="사용자"

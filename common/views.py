@@ -1,6 +1,9 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from common.forms import UserForm
+from insight.models import Person
+
+
 
 def signup(request):
     if request.method == "POST":
@@ -12,6 +15,15 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)  # 사용자 인증
             login(request, user)  # 로그인
+            birth = form.cleaned_data.get('birth')
+            email = form.cleaned_data.get('email')  # 아이디, 이메일, 학번, 생일, 이름, 성별
+            school = form.cleaned_data.get('studentid')
+            name = form.cleaned_data.get('name')
+            gender = form.cleaned_data.get('gender')
+
+            member = Person(username=username, name=name, school=school, gender=gender, birth=birth, email=email)
+            member.save()
+            # print(username, email, school, birth, name, gender)
             return redirect('index')
     else:
         form = UserForm()
@@ -19,3 +31,4 @@ def signup(request):
 
 def memberpage(request):
     return render(request, 'common/member.html')
+

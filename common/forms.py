@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from . import views
 
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="이메일")
@@ -9,6 +9,8 @@ class UserForm(UserCreationForm):
     birth = forms.IntegerField(label = "생일")
     gender = forms.IntegerField(label = "성별")
     studentid = forms.IntegerField(label="학번")
+    username = forms.CharField(label="사용자아이디")
+
     class Meta:
         model = User
-        fields = ("name", "username", "password1", "password2", "birth", "email", "gender")
+        fields = ("name", "username", "password1", "password2", "birth", "email", "gender")  #form의 피릴래
