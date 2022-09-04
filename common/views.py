@@ -4,6 +4,10 @@ from common.forms import UserForm
 from .models import Person
 
 
+from django.contrib.auth.forms import UserChangeForm
+from .forms import CustonUserChangeForm
+from django.contrib.auth.decorators import login_required
+
 
 def signup(request):
     if request.method == "POST":
@@ -31,4 +35,12 @@ def signup(request):
 
 def memberpage(request):
     return render(request, 'common/member.html')
+
+
+@login_required
+def update(request):
+    if request.method=='POST':
+        user_change_form = CustonUserChangeForm(instance = request.user)
+    return render(request, 'common/update.html', {'user_change_form':user_change_form})
+
 
