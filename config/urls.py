@@ -23,6 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('insight/', include('insight.urls')),
     path('common/', include('common.urls')),
-    path('', views.index, name='index'),     #로그인성공시 이동하는 /에 해당하는 path
-
+    path('', views.index, name='index'),     # 로그인성공시 이동하는 /에 해당하는 path
 ]
