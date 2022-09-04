@@ -36,11 +36,9 @@ def signup(request):
 def memberpage(request):
     return render(request, 'common/member.html')
 
-
-@login_required
+# @login_required
 def update(request):
-    if request.method=='POST':
-        user_change_form = CustonUserChangeForm(instance = request.user)
-    return render(request, 'common/update.html', {'user_change_form':user_change_form})
+    #user_change_form = UserChangeForm(instance = request.user)
+    return render(request, 'common/update.html')
 
 

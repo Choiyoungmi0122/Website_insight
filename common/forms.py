@@ -20,7 +20,6 @@ class UserForm(UserCreationForm):
         fields = ("name", "username", "password1", "password2", "birth", "email", "gender")  #form의 피릴래
 
 class CustonUserChangeForm(UserChangeForm):
-    name = forms.CharField
     class Meta:
         model = Person()
         fields = ['name', 'email', 'birth', 'gender']
