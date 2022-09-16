@@ -8,6 +8,9 @@ class Person(models.Model):
     gender=models.IntegerField()
     birth=models.IntegerField()
 
+    # class Meta:
+    #     db_table = 'User_manage'
+
     def __str__(self):
         return self.name
 

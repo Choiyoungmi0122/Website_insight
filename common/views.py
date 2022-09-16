@@ -1,8 +1,8 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from common.forms import UserForm
-from .models import Person
-
+from .models import Person  #admin에 나올것
+import pandas as pd
 
 from django.contrib.auth.forms import UserChangeForm
 from .forms import CustonUserChangeForm
@@ -24,21 +24,26 @@ def signup(request):
             school = form.cleaned_data.get('studentid')
             name = form.cleaned_data.get('name')
             gender = form.cleaned_data.get('gender')
-
+            data_csv = pd.read_csv('/Users/choeyeongmi/projects/insight/User.csv')
+            data_csv.loc[-1] = [name, username, raw_password, raw_password, birth, email, gender]
+            data_csv.to_csv('/Users/choeyeongmi/projects/insight/User.csv',index =False)
             member = Person(username=username, name=name, school=school, gender=gender, birth=birth, email=email)
             member.save()
+
             # print(username, email, school, birth, name, gender)
             return redirect('index')
     else:
         form = UserForm()
     return render(request, 'common/signup.html', {'form': form})
 
+
+
+
 def memberpage(request):
     return render(request, 'common/member.html')
 
 # @login_required
-def update(request):
+def mypage(request):
     #user_change_form = UserChangeForm(instance = request.user)
-    return render(request, 'common/update.html')
-
+    return render(request, 'common/mypage.html')
 

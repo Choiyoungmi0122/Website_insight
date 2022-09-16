@@ -12,8 +12,9 @@ class UserForm(UserCreationForm):
     name = forms.CharField(label = "사용자이름")
     birth = forms.IntegerField(label = "생일")
     gender = forms.IntegerField(label = "성별")
-    studentid = forms.IntegerField(label="학번")
+    studentid = forms.IntegerField(label = "학번")
     username = forms.CharField(label="사용자아이디")
+
 
     class Meta:
         model = User
