@@ -1,0 +1,26 @@
+.col-12{
+width:60%;
+height:10vh;
+margin-top:2%;
+margin-left:20%;
+}
+
+@media (min-width:300px){
+.logo {
+width:70%;
+height:10%;
+}
+}
+
+.col-lg-8 {
+margin: auto;
+background-color: #E6E6E6;
+width: 45%;
+height: 100vh;
+}
+
+.box01{
+width:200px;
+height:250px;
+background-image:url('http://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg');
+}

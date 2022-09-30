@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body style="height: 900px">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="height:30vh;">
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="top: 3%;position: absolute;left: 40%;right: 50%"><img src="https://ifh.cc/g/d5Z5DL.png" width="80%" height="30%">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald&family=Square+Peg&display=swap" rel="stylesheet">
+
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="top:20%;position: absolute;left: 30%;right: 50%;width: 40%; ">
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">소개</a>
+            <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">동아리소개</a></li>
+              <li><a class="dropdown-item" href="#">구성원</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">스케줄</a>
+            <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">동아리일정</a></li>
+              <li><a class="dropdown-item" href="#">개인일정</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;">공지사항</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;">자료실</a></li>
+
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">커뮤니티</a>
+          <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">자유게시판</a></li>
+              <li><a class="dropdown-item" href="#">코딩문제</a></li>
+              <li><a class="dropdown-item" href="#">Q&A</a></li>
+
+
+          </ul>
+        </li>
+      </ul>
+
+    </header>
+
+    <main>
+     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+     <div class="col-lg-7 text-center text-lg-start"></div>
+
+      <div class="col-md-10 mx-auto col-lg-4" >
+      <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="{% url 'common:login' %}">
+          {% csrf_token %}
+          {% include "form_errors_django.html" %}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username" style="border-radius:10px;" value="{{ form.username.value|default_if_none:'' }}">
+        <label for="floatingInput">아이디</label></div>
+
+      <div class="form-floating mb-3">
+       <input type="password" class="form-control" id="password" name="password" placeholder="Password" style="border-radius:10px;" value="{{ form.password.value|default_if_none:'' }}">
+       <label for="floatingPassword">비밀번호</label></div>
+
+      <div class="checkbox mb-3">
+      <label> <input type="checkbox" value="remember-me"> 아이디 기억하기</label></div>
+
+      <button type="submit" class="btn-lg btn-dark" style="background-color:#3F48CC; border-color:#3F48CC; width:100%; border-radius:10px;">로그인</button>
+{#          <a type="button" href="{% url 'common:login' %}"></a>#}
+      <hr class="my-4">
+      <small class="text-muted">로그인을 클릭하면 이용약관에 동의하게 됩니다.</small>
+    </form>
+    </div>
+    </div>
+
+ </div>
+
+    </main>
+<footer class="py-3 my-4" style="left:0;bottom:0; width:100%; background-color:white;float: left;">
+    <p class="text-center text-muted">© 2022 INSIGHT, Club</p>
+  </footer>
+</body>
+</html>

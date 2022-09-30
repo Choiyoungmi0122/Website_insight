@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insight</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body style="height: 900px">
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="height: 20%">
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="top: 3%;position: absolute;left: 42%;right: 50%"><img src="https://ifh.cc/g/d5Z5DL.png" width="80%" height="30%">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Oswald&family=Square+Peg&display=swap" rel="stylesheet">
+
+      </a>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" style="top:17%;position: absolute;left: 32%;right: 50%;width: 40%; ">
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">intoduction</a>
+            <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">동아리소개</a></li>
+              <li><a class="dropdown-item" href="#">구성원</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">schedule</a>
+            <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">동아리일정</a></li>
+              <li><a class="dropdown-item" href="#">개인일정</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;">notice</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="font-size:110%;" data-bs-toggle="dropdown" aria-expanded="false">community</a>
+          <ul class="dropdown-menu"aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">자유게시판</a></li>
+              <li><a class="dropdown-item" href="#">코딩문제</a></li>
+              <li><a class="dropdown-item" href="#">Q&A</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="col-md-3 text-end" style="position: absolute;left: 70%;top:15%">
+      {% if user.is_authenticated %}
+        <a type="button" href ="{% url 'common:logout' %}" class= "btn me-2" style="border-color:#3F48CC; color:#3F48CC;"> logout </a>
+        <a type="button"  class="btn me-2" style="border-color:#3F48CC; color:#3F48CC;">{{ user.username }}</a>
+      {% else %}
+          <a  type="button" href ="{% url 'common:login' %}" class="btn me-2" style="border-color:#3F48CC; color:#3F48CC;">Login</a>      {#로그인 버튼 클릭시 로그인 화면으로 이동#}
+      {% endif %}
+      {% if not user.is_authenticated %}
+              <a type="button" class="btn btn-dark" style="background-color:#3F48CC; border-color:#3F48CC;" href="{% url 'common:signup' %}">Sign-up</a>
+      {% endif %}
+      </div>
+    </header>
+
+    <main>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-image:url('https://static.vecteezy.com/system/resources/previews/008/118/918/non_2x/abstract-architecture-background-3d-modern-architecture-render-free-photo.jpg');background-repeat:no-repeat;background-size:100%;">
+       <div class="col-md-5 p-lg-5 mx-auto my-5">
+     <div class="display-4 fw-normal" style="width:180%; margin-left:-45%;"><font style="color:#3F48CC;">Welcome to INSIGHT</font></div>
+   </div>
+ </div>
+        <section class="list" style="height:103vh;width:20%;float: left;margin-left: 1.5%;text-align: center;background-color: whitesmoke">
+            <div><div class="list-group">
+                <label class="list-group-item d-flex gap-3">
+        <span class="pt-1 form-checked-content">
+        <strong>to-do list</strong>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3">
+    <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="" style="font-size: 1.375em;">
+    <span class="pt-1 form-checked-content">
+      <strong>Finish sales report</strong>
+      <small class="d-block text-muted">
+        <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"></use></svg>
+        1:00–2:00pm
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3">
+    <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+    <span class="pt-1 form-checked-content">
+      <strong>Weekly All Hands</strong>
+      <small class="d-block text-muted">
+        <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"></use></svg>
+        2:00–2:30pm
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3">
+    <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+    <span class="pt-1 form-checked-content">
+      <strong>Out of office</strong>
+      <small class="d-block text-muted">
+        <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#alarm"></use></svg>
+        Tomorrow
+      </small>
+    </span>
+  </label>
+  <label class="list-group-item d-flex gap-3 bg-light">
+    <input class="form-check-input form-check-input-placeholder bg-light flex-shrink-0" disabled="" type="checkbox" value="" style="font-size: 1.375em;">
+    <span class="pt-1 form-checked-content">
+      <span contenteditable="true" class="w-100">Add new task...</span>
+      <small class="d-block text-muted">
+        <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#list-check"></use></svg>
+        Choose list...
+      </small>
+    </span>
+  </label>
+</div></div>
+        </section>
+        <div>
+            <section class="notice" style="height:50vh;width: 52%;text-align: center;float: left;margin-left: 1.5%;background-color: whitesmoke">
+                <div class="p-4 p-md-5 mb-4 text-dark rounded">
+    <div class="col-md-0 px-0">
+      <h1 class="display-0 fst-italic">Notice</h1> <br>
+        <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3" style="width:200%;">
+             <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="100" style="background-image:url(https://cdn.imweb.me/thumbnail/20211125/486fe1bb35680.jpg); background-position:center; background-size:cover;"></svg>
+        </div><br>
+        <button class="btn me-2" style="border-color:#3F48CC; color:#3F48CC;" href="#">Continue reading...</button>
+        </div>
+  </div>
+            </section>
+            <section class="calendar" style="height:50vh; width:22%;text-align:center; float:right; margin-right:1.5%; background-color:whitesmoke">
+        <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm" >
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Calender</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-1 mb-2">
+              <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="300" style="background-image:url(https://blog.kakaocdn.net/dn/UDwwj/btroebj0JOz/UVtJ9Fz6xcI2Dttj5kFPt0/img.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+            </section>
+        </div>
+        <div>
+            <section class="activity"
+                    style="height:50vh;width: 52%;text-align: center;float: left;margin-left:1.5%;margin-top:1.5%;background-color: whitesmoke">
+                <div>
+        <div class="bd-example">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7" class=""></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8" class=""></button>
+        </div>
+
+          <div class="carousel-inner" style="height:100%;">
+          <div class="carousel-item active">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+          <div class="carousel-caption d-none d-md-block">
+        <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-success">Chairman</strong>
+          <h3 class="mb-0 text-dark">김희준</h3>
+          <div class="mb-4 text-muted">산업ICT기술공학</div>
+          <div class="card-text mb-4 text-dark">총괄/백엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+          <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/ccJjGO.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+            <div class="carousel-item">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#666"></rect></svg>
+            <div class="carousel-caption d-none d-md-block">
+            <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-success">Vice Chairman</strong>
+          <h3 class="mb-0 text-dark">류진우</h3>
+          <div class="mb-4 text-muted">산업ICT기술공학</div>
+          <div class="card-text mb-4 text-dark">프론트엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/oLA4n9.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="carousel-item">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#555"></rect></svg>
+        <div class="carousel-caption d-none d-md-block">
+        <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">한승은</h3>
+          <div class="mb-4 text-muted">컴퓨터공학</div>
+          <div class="card-text mb-4 text-dark">사업가</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+          <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/4HqzvX.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+          <div class="carousel-item">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+          <div class="carousel-caption d-none d-md-block">
+          <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">이정훈</h3>
+          <div class="mb-4 text-muted">컴퓨터공학</div>
+          <div class="card-text mb-4 text-dark">백엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+          <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/77RT8G.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+              <div class="carousel-item">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#666"></rect></svg>
+              <div class="carousel-caption d-none d-md-block">
+              <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">김민경</h3>
+          <div class="mb-4 text-muted">산업융합시스템공학</div>
+          <div class="card-text mb-4 text-dark">프론트엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+          <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/Z8yfPQ.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+              <div class="carousel-item">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#555"></rect></svg>
+              <div class="carousel-caption d-none d-md-block">
+              <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">정시영</h3>
+          <div class="mb-4 text-muted">산업융합시스템공학</div>
+          <div class="card-text mb-4 text-dark">프론트엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+          <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/RoVNzr.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+          <div class="carousel-item">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+          <div class="carousel-caption d-none d-md-block">
+          <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">최영미</h3>
+          <div class="mb-4 text-muted">컴퓨터공학</div>
+          <div class="card-text mb-4 text-dark">백엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/t23fq1.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+               <div class="carousel-item">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#666"></rect></svg>
+              <div class="carousel-caption d-none d-md-block">
+              <div class="row g-0 border rounded  mb-4">
+        <div class="col d-flex flex-column position-static" style="background-color:white;">
+        <br>
+          <strong class="d-inline-block mb-4 text-primary">Member</strong>
+          <h3 class="mb-0 text-dark">박지현</h3>
+          <div class="mb-4 text-muted">조선해양공학</div>
+          <div class="card-text mb-4 text-dark">백엔드</div>
+          <a href="#" class="stretched-link">View Portfolio</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" style="background-image:url(https://ifh.cc/g/c0B9Ck.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+        </div>
+        </div>
+        </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        </div>
+      </div>
+            </section>
+            <section class="schedule"
+                    style="height:50vh;width: 22%;text-align: center;float: right;margin-right: 1.5%;margin-top:1.5%;background-color: whitesmoke">
+        <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm" >
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Activity Report</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mt-1 mb-2">
+              <li>창업동아리를 찾고 계신다면</li>
+              <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="230" style="background-image:url(https://ifh.cc/g/stfqwP.jpg); background-position:center; background-size:cover;"></svg>
+        </div>
+
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Apply for a club</button>
+          </div>
+        </div>
+      </div>
+            </section>
+
+        </div>
+
+    </main>
+<footer class="py-3 my-4" style="left:0;bottom:0; width:100%; background-color:white;float: left;">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">introduction</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">schedule</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">notice</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">community</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2022 INSIGHT, Club</p>
+  </footer>
+</body>
+</html>
